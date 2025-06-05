@@ -158,7 +158,7 @@ npm run storybook
 
 **Nitish Kumar**
 \[LinkedIn Profile : https://www.linkedin.com/in/nitish-kumar-69b32b232
-\[GitHub Profile: whoisni30 
+\[GitHub Profile: https://github.com/whoisni30
 
 ---
 
