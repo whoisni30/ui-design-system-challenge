@@ -1,107 +1,25 @@
-/* Token-based Color System with light and dark mode using CSS variables */
-
 :root {
-  /* Primary Colors */
-  --color-primary: #0d6efd;
-  --color-primary-light: #3d8bfd;
-  --color-primary-dark: #0a58ca;
-
-  /* Secondary Colors */
-  --color-secondary: #6c757d;
-  --color-secondary-light: #8a9298;
-  --color-secondary-dark: #495057;
-
-  /* Tertiary Colors */
-  --color-tertiary: #6610f2;
-  --color-tertiary-light: #7f2eff;
-  --color-tertiary-dark: #5200cc;
-
-  /* Neutral Palette */
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-gray-100: #f8f9fa;
-  --color-gray-200: #e9ecef;
-  --color-gray-300: #dee2e6;
-  --color-gray-400: #ced4da;
-  --color-gray-500: #adb5bd;
-  --color-gray-600: #6c757d;
-  --color-gray-700: #495057;
-  --color-gray-800: #343a40;
-  --color-gray-900: #212529;
-
-  /* Semantic Colors */
-  --color-success: #198754;
-  --color-info: #0dcaf0;
-  --color-warning: #ffc107;
-  --color-error: #dc3545;
-
-  /* Surface/Background layering */
-  --color-surface-default: var(--color-white);
-  --color-surface-muted: var(--color-gray-100);
-  --color-surface-hover: var(--color-gray-200);
-  --color-border: var(--color-gray-300);
+  --color-primary: #2563eb;
+  --color-secondary: #7c3aed;
+  --color-tertiary: #059669;
+  --color-background: #ffffff;
+  --color-foreground: #1f2937;
+  --color-success: #22c55e;
+  --color-info: #3b82f6;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-border: #d1d5db;
 }
 
-/* Dark Theme */
 [data-theme='dark'] {
-  --color-primary: #4dabf7;
-  --color-primary-light: #a1c8ff;
-  --color-primary-dark: #228be6;
-
-  --color-secondary: #ced4da;
-  --color-secondary-light: #e9ecef;
-  --color-secondary-dark: #adb5bd;
-
-  --color-tertiary: #cc99ff;
-  --color-tertiary-light: #d4bfff;
-  --color-tertiary-dark: #a366ff;
-
-  --color-white: #212529;
-  --color-black: #f8f9fa;
-
-  --color-gray-100: #343a40;
-  --color-gray-200: #495057;
-  --color-gray-300: #6c757d;
-  --color-gray-400: #868e96;
-  --color-gray-500: #adb5bd;
-  --color-gray-600: #ced4da;
-  --color-gray-700: #dee2e6;
-  --color-gray-800: #e9ecef;
-  --color-gray-900: #f8f9fa;
-
-  --color-success: #2f9e44;
-  --color-info: #3bc9db;
-  --color-warning: #fcc419;
-  --color-error: #f03e3e;
-
-  --color-surface-default: #212529;
-  --color-surface-muted: #343a40;
-  --color-surface-hover: #495057;
-  --color-border: #6c757d;
-}
-
-/* Utility Classes to showcase colors in Storybook */
-.color-swatch {
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
-  margin: 0.5rem;
-  border: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-white);
-  font-weight: bold;
-  font-size: 0.75rem;
-  user-select: none;
-  text-align: center;
-  flex-direction: column;
-}
-
-.color-swatch.light-text {
-  color: var(--color-white);
-}
-
-.color-swatch.dark-text {
-  color: var(--color-black);
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --color-tertiary: #10b981;
+  --color-background: #1f2937;
+  --color-foreground: #f3f4f6;
+  --color-success: #4ade80;
+  --color-info: #60a5fa;
+  --color-warning: #facc15;
+  --color-error: #f87171;
+  --color-border: #374151;
 }
