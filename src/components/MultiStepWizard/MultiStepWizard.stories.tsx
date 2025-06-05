@@ -1,44 +1,40 @@
-import React, { useState } from "react";
-import MultiStepWizard from "./MultiStepWizard";
+import React from 'react';
+import MultiStepWizard from './MultiStepWizard';
 
 export default {
-  title: "Components/Multi-Step Wizard Form",
+  title: 'Components/MultiStepWizard',
   component: MultiStepWizard,
 };
 
-const steps = [
-  {
-    title: "User Info",
-    description: "Enter your personal details",
-    content: (
-      <form>
-        <label htmlFor="name" className="block mb-1 font-semibold">
-          Name
-        </label>
-        <input
-          id="name"
-          type="text"
-          placeholder="John Doe"
-          className="w-full p-2 border border-neutral-400 rounded mb-4"
-          required
-        />
-        <label htmlFor="email" className="block mb-1 font-semibold">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          placeholder="john@example.com"
-          className="w-full p-2 border border-neutral-400 rounded"
-          required
-        />
-      </form>
-    ),
-    validate: () => true, // Could add real validation here
-  },
-  {
-    title: "Address",
-    description: "Where do you live?",
-    content: (
-      <form>
-        
+export const Default = () => <MultiStepWizard />;
+
+// 📁 src/components/AdvancedModal/AdvancedModal.tsx
+import React, { useState, useEffect } from 'react';
+
+const AdvancedModal = () => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, []);
+
+  return (
+    <div className="mt-10 text-center">
+      <button onClick={() => setOpen(true)} className="bg-tertiary text-white px-4 py-2 rounded">Open Modal</button>
+
+      {open && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-background p-6 rounded-lg shadow-xl w-96 relative animate-fade-in">
+            <h2 className="text-lg font-bold mb-2">Advanced Modal</h2>
+            <p className="mb-4">This is a modal with ESC support and backdrop.</p>
+            <button onClick={() => setOpen(false)} className="bg-error text-white px-4 py-2 rounded">Close</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
