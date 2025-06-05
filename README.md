@@ -90,18 +90,35 @@ Each component includes:
 
 ```
 
-src/
-│
-├── components/
-│   ├── ColorSystem/
-│   ├── MultiStepWizard/
-│   └── AdvancedModal/
-│
-├── theme/
-│   └── colorVariables.css
-├── styles/
-├── App.tsx
-└── index.tsx
+ui-design-system-challenge/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── ColorSystem/
+│   │   │   ├── tokens.css
+│   │   │   └── ColorSystem.stories.tsx
+│   │   ├── MultiStepWizard/
+│   │   │   ├── MultiStepWizard.tsx
+│   │   │   ├── Step.tsx
+│   │   │   └── MultiStepWizard.stories.tsx
+│   │   ├── AdvancedModal/
+│   │   │   ├── AdvancedModal.tsx
+│   │   │   └── AdvancedModal.stories.tsx
+│   ├── theme/
+│   │   ├── themes.ts
+│   │   └── useTheme.ts
+│   ├── App.tsx
+│   ├── index.tsx
+│   ├── react-app-env.d.ts
+├── .storybook/
+│   ├── main.js
+│   └── preview.js
+├── tailwind.config.js
+├── tsconfig.json
+├── package.json
+└── README.md
+
 
 ````
 
