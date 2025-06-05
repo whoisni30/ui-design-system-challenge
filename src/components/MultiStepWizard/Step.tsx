@@ -1,54 +1,44 @@
-import React from "react";
+import React from 'react';
 
-export interface StepProps {
+type StepProps = {
   title: string;
-  description?: string;
-  isActive: boolean;
-  isCompleted: boolean;
-  stepNumber: number;
-  onClick?: () => void;
-}
+  content: string;
+  formData: any;
+  setFormData: (data: any) => void;
+  step: number;
+};
 
-const Step: React.FC<StepProps> = ({
-  title,
-  description,
-  isActive,
-  isCompleted,
-  stepNumber,
-  onClick,
-}) => {
+const Step = ({ title, content, formData, setFormData, step }: StepProps) => {
   return (
-    <button
-      onClick={onClick}
-      className={`flex items-center cursor-pointer focus:outline-none ${
-        isActive ? "text-primary" : "text-neutral-400"
-      }`}
-      aria-current={isActive ? "step" : undefined}
-    >
-      <div
-        className={`flex items-center justify-center w-8 h-8 rounded-full border-2 
-        ${isCompleted ? "bg-primary border-primary text-white" : "border-neutral-400"}`}
-      >
-        {isCompleted ? (
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={3}
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        ) : (
-          stepNumber
+    <div>
+      <h2 className="text-xl font-bold mb-2">{title}</h2>
+      <label className="block mb-2">
+        {step === 0 && (
+          <input
+            type="text"
+            placeholder="Name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="w-full border px-3 py-2 rounded"
+          />
         )}
-      </div>
-      <div className="ml-3 text-left">
-        <p className="font-semibold">{title}</p>
-        {description && <p className="text-sm text-neutral-500">{description}</p>}
-      </div>
-    </button>
+        {step === 1 && (
+          <input
+            type="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="w-full border px-3 py-2 rounded"
+          />
+        )}
+        {step === 2 && (
+          <div className="space-y-2">
+            <p><strong>Name:</strong> {formData.name}</p>
+            <p><strong>Email:</strong> {formData.email}</p>
+          </div>
+        )}
+      </label>
+    </div>
   );
 };
 
