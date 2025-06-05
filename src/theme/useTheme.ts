@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { applyTheme, Theme } from "./themes";
+import { useEffect } from 'react';
+import { darkTheme, lightTheme, Theme } from './themes';
 
-export function useTheme() {
-  const [theme, setTheme] = useState<Theme>("light");
+export const applyTheme = (theme: Theme) => {
+  const root = document.documentElement;
+  Object.entries(theme).forEach(([key, value]) => {
+    root.style.setProperty(key, value);
+  });
+};
 
+export const useTheme = (mode: 'light' | 'dark') => {
   useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
-
-  function toggleTheme() {
-    setTheme(theme === "light" ? "dark" : "light");
-  }
-
-  return { theme, toggleTheme };
-}
+    applyTheme(mode === 'light' ? lightTheme : darkTheme);
+    document.documentElement.setAttribute('data-theme', mode);
+  }, [mode]);
+};
