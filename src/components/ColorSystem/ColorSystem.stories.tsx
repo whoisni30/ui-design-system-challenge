@@ -1,45 +1,71 @@
-import React from "react";
+import React from 'react';
 
 export default {
-  title: "Design System/Color System",
+  title: 'Design System/Color System',
 };
 
-export const ColorTokens = () => {
-  return (
-    <div className="p-6 bg-neutral-100 dark:bg-neutral-900 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6 text-primary dark:text-primary">
-        Token-Based Color System
-      </h1>
-      <div className="grid grid-cols-3 gap-6 max-w-4xl">
-        {[
-          { name: "Primary", varName: "--color-primary" },
-          { name: "Secondary", varName: "--color-secondary" },
-          { name: "Tertiary", varName: "--color-tertiary" },
-          { name: "Success", varName: "--color-success" },
-          { name: "Info", varName: "--color-info" },
-          { name: "Warning", varName: "--color-warning" },
-          { name: "Error", varName: "--color-error" },
-          { name: "Neutral 100", varName: "--color-neutral-100" },
-          { name: "Neutral 500", varName: "--color-neutral-500" },
-          { name: "Neutral 900", varName: "--color-neutral-900" },
-          { name: "Surface 1", varName: "--color-background-surface1" },
-          { name: "Surface 2", varName: "--color-background-surface2" },
-          { name: "Surface 3", varName: "--color-background-surface3" },
-        ].map(({ name, varName }) => (
-          <div key={varName} className="flex items-center space-x-4">
-            <div
-              style={{ backgroundColor: `var(${varName})` }}
-              className="w-16 h-16 rounded shadow-md border border-neutral-400"
-              aria-label={`${name} color token`}
-              role="img"
-            />
-            <div>
-              <p className="font-semibold">{name}</p>
-              <code className="text-sm text-neutral-700 dark:text-neutral-300">{varName}</code>
-            </div>
-          </div>
-        ))}
+const tokens = [
+  { name: '--color-primary', label: 'Primary' },
+  { name: '--color-secondary', label: 'Secondary' },
+  { name: '--color-tertiary', label: 'Tertiary' },
+  { name: '--color-success', label: 'Success' },
+  { name: '--color-info', label: 'Info' },
+  { name: '--color-warning', label: 'Warning' },
+  { name: '--color-error', label: 'Error' },
+  { name: '--color-white', label: 'White' },
+  { name: '--color-black', label: 'Black' },
+  { name: '--color-gray-100', label: 'Gray 100' },
+  { name: '--color-gray-200', label: 'Gray 200' },
+  { name: '--color-gray-300', label: 'Gray 300' },
+  { name: '--color-gray-400', label: 'Gray 400' },
+  { name: '--color-gray-500', label: 'Gray 500' },
+  { name: '--color-gray-600', label: 'Gray 600' },
+  { name: '--color-gray-700', label: 'Gray 700' },
+  { name: '--color-gray-800', label: 'Gray 800' },
+  { name: '--color-gray-900', label: 'Gray 900' },
+  { name: '--color-surface-default', label: 'Surface Default' },
+  { name: '--color-surface-muted', label: 'Surface Muted' },
+  { name: '--color-surface-hover', label: 'Surface Hover' },
+  { name: '--color-border', label: 'Border' },
+];
+
+export const ColorTokens = () => (
+  <div style={{ display: 'flex', flexWrap: 'wrap', padding: 16 }}>
+    {tokens.map(({ name, label }) => (
+      <div
+        key={name}
+        className="color-swatch"
+        style={{
+          backgroundColor: `var(${name})`,
+          color: ['--color-white', '--color-gray-100', '--color-gray-200'].includes(name) ? 'black' : 'white',
+        }}
+        title={`${label} (${name})`}
+      >
+        <div>{label}</div>
+        <small>{name}</small>
       </div>
-    </div>
-  );
+    ))}
+  </div>
+);
+
+ColorTokens.storyName = 'Color Tokens';
+ColorTokens.parameters = {
+  docs: {
+    description: {
+      story: `
+**Token Naming Conventions:**
+
+- Primary, Secondary, Tertiary colors follow \`--color-primary\`, \`--color-secondary\`, \`--color-tertiary\`.
+- Neutral palette with \`--color-gray-xxx\` and \`--color-white\`, \`--color-black\`.
+- Semantic colors such as success, info, warning, and error.
+- Surface colors represent background layers.
+- Supports light & dark theme using \`data-theme\` attribute on root element.
+
+**Accessibility:**
+
+- All colors meet WCAG contrast ratios for readability.
+- Use tokens in UI components to maintain consistency and theming.
+`,
+    },
+  },
 };
